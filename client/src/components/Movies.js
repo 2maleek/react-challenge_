@@ -28,7 +28,7 @@ function Movie() {
   const [loading, setLoading] = useState(true)
   const imgUrl = 'http://image.tmdb.org/t/p/w342'
   useEffect(() => {
-    fetch('https://api.themoviedb.org/3/movie/419704?api_key=9435ef832f577bb7037f8360b55808ba&language=en-US')
+    fetch('https://api.themoviedb.org/3/movie/'+ movieId +'?api_key=9435ef832f577bb7037f8360b55808ba&language=en-US')
     .then(res => res.json())
     .then(data => {
       console.log(data)
