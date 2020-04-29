@@ -1,16 +1,11 @@
-import React,{ useState, useEffect } from 'react';
+import React,{ useState } from 'react';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
-import useFetch from '../hooks/useFetch'
 
 function NavbarComponent(props) {
 
   const [keyword, setKeyword] = useState('')
-  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [url, setUrl] = useState('https://api.themoviedb.org/3/search/movie?api_key=9435ef832f577bb7037f8360b55808ba&language=en-US&page=1&query=')
-
-
-  // const [filteredMovie, loading, error] = useFetch(url)
+  const url = 'https://api.themoviedb.org/3/search/movie?api_key=9435ef832f577bb7037f8360b55808ba&language=en-US&page=1&query='
 
   function liat(e) {
     setKeyword(e.target.value)
@@ -27,11 +22,9 @@ function NavbarComponent(props) {
       console.log(data)
       props.onSearchMovies(data)
     })
-    .catch(error => {
-      setError(error.status_message)
-    })
-    .finally(() => {
-      setLoading(false)
+    .catch(err => {
+      setError(err.status_message)
+      console.log(error)
     })
   }
   return (
