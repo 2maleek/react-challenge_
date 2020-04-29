@@ -12,6 +12,7 @@ export default (url) => {
       if(data.status_code) {
         throw data
       }
+      console.log(data)
       setData(data.results)
     })
     .catch(error => {
@@ -20,5 +21,5 @@ export default (url) => {
     .finally(() => setLoading(false))
   }, [url]);
 
-  return [data, loading, error];
+  return [data, setData, loading, error];
 }
