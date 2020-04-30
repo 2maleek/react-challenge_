@@ -1,5 +1,6 @@
 import React,{ useState } from 'react';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
+import { Link } from "react-router-dom";
 
 function NavbarComponent(props) {
 
@@ -30,8 +31,13 @@ function NavbarComponent(props) {
   return (
     <>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">Movie</Navbar.Brand>
+        <Link to="/">
+          <Navbar.Brand>Movie</Navbar.Brand>
+        </Link>
         <Nav className="mr-auto">
+          <Link to="/myFavorite">
+            <Nav>My Favorite</Nav>
+          </Link>
         </Nav>
         <Form inline onSubmit={searchMovie}>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={liat} />
