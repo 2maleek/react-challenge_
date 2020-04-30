@@ -1,12 +1,14 @@
-import React, {  useState, useEffect } from 'react';
-import { useSelector, useDispatch } from "react-redux";
+import React, {  useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Switch,
   Route,
   useParams,
   useRouteMatch,
-} from "react-router-dom";
+  Link,
+} from 'react-router-dom';
 import { getMovieDetail } from '../store/actions/moviesActions'
+import NavbarComponent from './NavbarComponent'
 
 function Movies() {
   let match = useRouteMatch()
@@ -32,8 +34,13 @@ function Movie() {
     dispatch(getMovieDetail(movieId))
   }, [])
 
+  function searchMovies(data) {
+    return  <Link to='/'></Link>
+  }
+
   return (
     <>
+    <NavbarComponent onSearchMovies={searchMovies}/>
     { movie ?
       <div className="container-fluid">
         <div className="row">

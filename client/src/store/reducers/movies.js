@@ -1,5 +1,5 @@
 const initialState = {
-  movies: [],
+  movies: ['kelomang'],
   movie: null
 }
 

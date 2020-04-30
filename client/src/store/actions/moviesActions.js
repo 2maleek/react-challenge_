@@ -6,7 +6,7 @@ export function getMovies() {
         dispatch({
           type: "GET_MOVIES",
           payload: {
-            movies: data,
+            movies: data.results,
           },
         });
       });

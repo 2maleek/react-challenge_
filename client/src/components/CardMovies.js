@@ -6,19 +6,22 @@ import {
 import {
   useSelector, useDispatch
 } from 'react-redux'
-import { addToFavorite } from '../store/actions/favoritesActions'
+import { addToFavorite, removeFromFavorite } from '../store/actions/favoritesActions'
 
 function CardMovies(props) {
 
   const { favorite } = useSelector(state => state.favoritesReducer)
   const dispatch = useDispatch()
   function addFavorite(movieId) {
-    console.log(favorite)
     dispatch(addToFavorite(movieId))
   }
+
+  function removeFavorite(movieId) {
+    dispatch(removeFromFavorite(movieId))
+  }
+
   return (
     <div className="container">
-      <h4>{favorite}</h4>
       <div className="row">
         {props.listMovies.map(movie => {
           let imageUrl = "http://image.tmdb.org/t/p/w154"
@@ -36,6 +39,7 @@ function CardMovies(props) {
                     { movie.release_date }
                   </Card.Text>
                   <button type="button" onClick={ () => addFavorite(movie.id) }>Add to favorite</button>
+                  <button type="button" onClick={ () => removeFavorite(movie.id) }>Remove from favorite</button>
                 </Card.Body>
               </Card>
             </div>
