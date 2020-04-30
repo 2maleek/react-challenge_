@@ -1,11 +1,13 @@
-import { createStore, combineReducers } from 'redux'
-import messagesReducer from "./reducers/messages"
+import { createStore, combineReducers, applyMiddleware  } from 'redux'
+import thunk from 'redux-thunk'
 import favoritesReducer from './reducers/favorites'
+import moviesReducer from './reducers/movies'
 
 const reducer = combineReducers({
-  messagesReducer,
-  favoritesReducer
+  favoritesReducer,
+  moviesReducer,
 })
-const store = createStore(reducer)
+
+const store = createStore(reducer, applyMiddleware(thunk))
 
 export default store

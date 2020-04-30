@@ -1,15 +1,15 @@
 import React, {  useState, useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   useParams,
   useRouteMatch,
 } from "react-router-dom";
+import { getMovieDetail } from '../store/actions/moviesActions'
 
 function Movies() {
   let match = useRouteMatch()
-  let { movieId } = useParams();
   return (
     <Switch>
       <Route path={`${match.path}/:movieId`}>
@@ -23,25 +23,18 @@ function Movies() {
 }
 
 function Movie() {
+  const movie = useSelector((state) => state.moviesReducer.movie);
+  const dispatch =  useDispatch()
   let { movieId } = useParams();
-  const [movie, setMovie] = useState(null)
-  const [loading, setLoading] = useState(true)
   const imgUrl = 'http://image.tmdb.org/t/p/w342'
+
   useEffect(() => {
-    fetch('https://api.themoviedb.org/3/movie/'+ movieId +'?api_key=9435ef832f577bb7037f8360b55808ba&language=en-US')
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      setMovie(data)
-      setLoading(false)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    dispatch(getMovieDetail(movieId))
   }, [])
+
   return (
     <>
-    { !loading ?
+    { movie ?
       <div className="container-fluid">
         <div className="row">
           <div className="col-5">
