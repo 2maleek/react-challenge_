@@ -31,11 +31,11 @@ function NavbarComponent(props) {
   return (
     <>
       <Navbar bg="dark" variant="dark">
-        <Link to="/">
+        <Link to="/" data-testid="homeBtn">
           <Navbar.Brand>Movie</Navbar.Brand>
         </Link>
         <Nav className="mr-auto">
-          <Link to="/myFavorite">
+          <Link to="/myFavorite" data-testid="myFavBtn">
             <Nav>My Favorite</Nav>
           </Link>
         </Nav>
