@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import CardMovies from '../components/CardMovies';
 import NavbarComponent from '../components/NavbarComponent';
 import { Button, Spinner } from 'react-bootstrap';
-import useFetch from '../hooks/useFetch';
 import { useSelector, useDispatch } from 'react-redux';
 import { getMovies } from '../store/actions/moviesActions';
 function Home() {
